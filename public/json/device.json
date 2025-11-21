@@ -1,0 +1,126 @@
+{
+  "devices": [
+    { "id": 1, "name": "Device 1", "location": "Lantai 56", "status": "KOSONG", "height": 22, "battery": 90 },
+    { "id": 2, "name": "Device 2", "location": "Lantai 12", "status": "PENUH", "height": 4, "battery": 72 },
+    { "id": 3, "name": "Device 3", "location": "Lantai 3", "status": "SETENGAH", "height": 12, "battery": 65 },
+    { "id": 4, "name": "Device 4", "location": "Lantai 14", "status": "KOSONG", "height": 30, "battery": 88 },
+    { "id": 5, "name": "Device 5", "location": "Lantai 20", "status": "PENUH", "height": 5, "battery": 59 },
+    { "id": 6, "name": "Device 6", "location": "Lantai 8", "status": "SETENGAH", "height": 15, "battery": 71 },
+    { "id": 7, "name": "Device 7", "location": "Lantai 10", "status": "KOSONG", "height": 27, "battery": 93 },
+    { "id": 8, "name": "Device 8", "location": "Lantai 42", "status": "SETENGAH", "height": 17, "battery": 64 },
+    { "id": 9, "name": "Device 9", "location": "Lantai 5", "status": "PENUH", "height": 3, "battery": 54 },
+    { "id": 10, "name": "Device 10", "location": "Lantai 23", "status": "KOSONG", "height": 25, "battery": 81 },
+    { "id": 11, "name": "Device 11", "location": "Lantai 7", "status": "SETENGAH", "height": 14, "battery": 68 },
+    { "id": 12, "name": "Device 12", "location": "Lantai 18", "status": "KOSONG", "height": 29, "battery": 87 }
+  ],
+
+  "detail": {
+    "1": {
+      "deviceName": "Device 1 - Lantai 56",
+      "current": { "status": "KOSONG", "tinggi": 22, "battery": 90 },
+      "history": [
+        { "status": "KOSONG", "tinggi": 22, "battery": 90, "date": "2025-11-20 10:20" },
+        { "status": "SETENGAH", "tinggi": 14, "battery": 85, "date": "2025-11-19 15:12" }
+      ]
+    },
+
+    "2": {
+      "deviceName": "Device 2 - Lantai 12",
+      "current": { "status": "PENUH", "tinggi": 4, "battery": 72 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 10, "battery": 75, "date": "2025-11-20 09:11" },
+        { "status": "PENUH", "tinggi": 4, "battery": 72, "date": "2025-11-19 18:47" }
+      ]
+    },
+
+    "3": {
+      "deviceName": "Device 3 - Lantai 3",
+      "current": { "status": "SETENGAH", "tinggi": 12, "battery": 65 },
+      "history": [
+        { "status": "KOSONG", "tinggi": 22, "battery": 70, "date": "2025-11-18 12:33" },
+        { "status": "SETENGAH", "tinggi": 12, "battery": 65, "date": "2025-11-19 09:55" }
+      ]
+    },
+
+    "4": {
+      "deviceName": "Device 4 - Lantai 14",
+      "current": { "status": "KOSONG", "tinggi": 30, "battery": 88 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 18, "battery": 91, "date": "2025-11-18 11:23" },
+        { "status": "KOSONG", "tinggi": 30, "battery": 88, "date": "2025-11-19 17:10" }
+      ]
+    },
+
+    "5": {
+      "deviceName": "Device 5 - Lantai 20",
+      "current": { "status": "PENUH", "tinggi": 5, "battery": 59 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 9, "battery": 62, "date": "2025-11-19 14:44" },
+        { "status": "PENUH", "tinggi": 5, "battery": 59, "date": "2025-11-20 08:20" }
+      ]
+    },
+
+    "6": {
+      "deviceName": "Device 6 - Lantai 8",
+      "current": { "status": "SETENGAH", "tinggi": 15, "battery": 71 },
+      "history": [
+        { "status": "KOSONG", "tinggi": 25, "battery": 78, "date": "2025-11-18 10:55" },
+        { "status": "SETENGAH", "tinggi": 15, "battery": 71, "date": "2025-11-19 20:11" }
+      ]
+    },
+
+    "7": {
+      "deviceName": "Device 7 - Lantai 10",
+      "current": { "status": "KOSONG", "tinggi": 27, "battery": 93 },
+      "history": [
+        { "status": "KOSONG", "tinggi": 27, "battery": 93, "date": "2025-11-20 07:20" },
+        { "status": "SETENGAH", "tinggi": 19, "battery": 90, "date": "2025-11-19 13:09" }
+      ]
+    },
+
+    "8": {
+      "deviceName": "Device 8 - Lantai 42",
+      "current": { "status": "SETENGAH", "tinggi": 17, "battery": 64 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 17, "battery": 64, "date": "2025-11-20 09:12" },
+        { "status": "KOSONG", "tinggi": 29, "battery": 70, "date": "2025-11-19 16:55" }
+      ]
+    },
+
+    "9": {
+      "deviceName": "Device 9 - Lantai 5",
+      "current": { "status": "PENUH", "tinggi": 3, "battery": 54 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 8, "battery": 60, "date": "2025-11-19 10:28" },
+        { "status": "PENUH", "tinggi": 3, "battery": 54, "date": "2025-11-20 12:02" }
+      ]
+    },
+
+    "10": {
+      "deviceName": "Device 10 - Lantai 23",
+      "current": { "status": "KOSONG", "tinggi": 25, "battery": 81 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 14, "battery": 83, "date": "2025-11-19 07:22" },
+        { "status": "KOSONG", "tinggi": 25, "battery": 81, "date": "2025-11-20 15:40" }
+      ]
+    },
+
+    "11": {
+      "deviceName": "Device 11 - Lantai 7",
+      "current": { "status": "SETENGAH", "tinggi": 14, "battery": 68 },
+      "history": [
+        { "status": "KOSONG", "tinggi": 26, "battery": 72, "date": "2025-11-18 09:33" },
+        { "status": "SETENGAH", "tinggi": 14, "battery": 68, "date": "2025-11-20 11:10" }
+      ]
+    },
+
+    "12": {
+      "deviceName": "Device 12 - Lantai 18",
+      "current": { "status": "KOSONG", "tinggi": 29, "battery": 87 },
+      "history": [
+        { "status": "SETENGAH", "tinggi": 16, "battery": 89, "date": "2025-11-19 17:10" },
+        { "status": "KOSONG", "tinggi": 29, "battery": 87, "date": "2025-11-20 13:40" }
+      ]
+    }
+  }
+}
