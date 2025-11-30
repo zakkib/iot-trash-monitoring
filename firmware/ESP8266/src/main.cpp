@@ -10,13 +10,25 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 #include <FirebaseClient.h>
-#include "secrets.h"
+
+// Network and Firebase credentials
+#define WIFI_SSID ""
+#define WIFI_PASSWORD ""
+
+#define Web_API_KEY ""
+#define DATABASE_URL "https://iot-trashbinmonitoring-default-rtdb.asia-southeast1.firebasedatabase.app/"
+#define USER_EMAIL ""
+#define USER_PASS ""
 
 // Forward declaration
 void processData(AsyncResult &aResult);
 
-// Firebase authentication
+/** Firebase authentication
+ *  UserAuth user_auth() for email/password authentication
+ *  UserAccount user() for anonymous authentication
+*/
 UserAuth user_auth(Web_API_KEY, USER_EMAIL, USER_PASS);
+UserAccount user(Web_API_KEY);
 
 // Firebase components
 FirebaseApp app;
@@ -25,11 +37,13 @@ using AsyncClient = AsyncClientClass;
 AsyncClient aClient(ssl_client);
 RealtimeDatabase Database;
 
-// ===== TIMERS =====
+// ===== SEND TIMER =====
 unsigned long lastSendTime = 0;
+const unsigned long sendInterval = 10000;
+
+// ===== READ TIMER =====
 unsigned long lastReadTime = 0;
-const unsigned long sendInterval = 10000;  // 10 seconds
-const unsigned long readInterval = 10000;  // 10 seconds
+const unsigned long readInterval = 10000;
 
 // ===== Local variables =====
 int intValueSend = 0;
@@ -44,16 +58,14 @@ void setup() {
   Serial.begin(115200);
   delay(200);
 
-  // Connect WiFi
-  Serial.print("Connecting to WiFi");
+  // Connect Wi-Fi
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Connecting to Wi-Fi");
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(300);
   }
-  Serial.println("\nWiFi Connected!");
-  Serial.print("IP: ");
-  Serial.println(WiFi.localIP());
+  Serial.println("\nWi-Fi Connected!");
 
   // ===== SSL CONFIGURATION =====
   ssl_client.setInsecure();           // no certificate validation
@@ -62,7 +74,8 @@ void setup() {
   delay(300);  // ESP8266 needs a moment before TLS handshake
 
   // ===== FIREBASE INIT =====
-  initializeApp(aClient, app, getAuth(user_auth), processData, "authTask");
+  // initializeApp(aClient, app, getAuth(user_auth), processData, "authTask");
+  signup(aClient, app, getAuth(user), processData, "🔐 anonAuthTask");
   app.getApp<RealtimeDatabase>(Database);
   Database.url(DATABASE_URL);
 
@@ -75,11 +88,13 @@ void loop() {
 
   unsigned long now = millis();
 
-  /*************** SEND EVERY 10s ***************/
+  /**********************************
+   *  SEND DATA EVERY 10 SECONDS
+   **********************************/
   if (now - lastSendTime >= sendInterval) {
     lastSendTime = now;
 
-    Serial.println("\n=== SENDING DATA ===");
+    Serial.println("\n=== SENDING DATA TO FIREBASE ===");
 
     stringValueSend = "value_" + String(now);
     Database.set<String>(aClient, "/hybrid/string", stringValueSend, processData, "Send_String");
@@ -91,7 +106,9 @@ void loop() {
     Database.set<float>(aClient, "/hybrid/float", floatValueSend, processData, "Send_Float");
   }
 
-  /*************** READ EVERY 10s ***************/
+  /**********************************
+   *  READ DATA EVERY 10 SECONDS
+   **********************************/
   if (now - lastReadTime >= readInterval) {
     lastReadTime = now;
 
@@ -106,7 +123,7 @@ void loop() {
 void processData(AsyncResult &aResult) {
   if (!aResult.isResult()) return;
 
-  // Firebase events
+  // Events and Debug logs
   if (aResult.isEvent())
     Firebase.printf("[EVENT] %s | %s\n",
         aResult.uid().c_str(),
@@ -122,12 +139,10 @@ void processData(AsyncResult &aResult) {
         aResult.uid().c_str(),
         aResult.error().message().c_str());
 
-  // Payload handling
+  // ===== Handle Received Payloads =====
   if (aResult.available()) {
     String payload = aResult.c_str();
-    Firebase.printf("[PAYLOAD] %s => %s\n",
-        aResult.uid().c_str(),
-        payload.c_str());
+    Firebase.printf("[PAYLOAD] %s => %s\n", aResult.uid().c_str(), payload.c_str());
 
     if (aResult.uid() == "Get_Int") {
       intValueRead = payload.toInt();
