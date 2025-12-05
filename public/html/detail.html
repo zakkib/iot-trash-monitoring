@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device 1 - Lantai 56</title>
+    <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../html/home.html"><button class="btn home-btn" >Home</button></a>
+        <h2>Device 1 - Lantai 56</h2>
+        <button class="btn notif-btn">NOTIFIKASI !!!!</button>
+    </div>
+
+    <div class="info-container">
+        <div class="info-box">
+            <h3>Status</h3>
+            <p class="value" id="statusValue">KOSONG</p>
+        </div>
+        <div class="info-box">
+            <h3>Tinggi Sampah</h3>
+            <p class="value" id="tinggiValue">22 cm</p>
+        </div>
+        <div class="info-box">
+            <h3>Battery Percentage</h3>
+            <p class="value" id="batteryValue">90%</p>
+        </div>
+    </div>
+
+    <div class="history-container">
+        <h3>Data Historis</h3>
+
+        <div class="history-header">
+            <span>Status</span>
+            <span>Tinggi Sampah</span>
+            <span>Battery Percentage</span>
+            <span>Date</span>
+        </div>
+
+        <div id="historyList"></div>
+    </div>
+
+    <script src="../js/detail.js"></script>
+</body>
+</html>
